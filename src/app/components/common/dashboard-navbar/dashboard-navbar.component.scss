@@ -14,6 +14,8 @@
         padding: {
             left: 30px;
             right: 30px;
+            top: 22px;
+            bottom: 22px;
         };
         .navbar {
             .navbar-nav {
@@ -298,7 +300,7 @@
 }
 .others-option-for-responsive {
     .dot-menu {
-        right: 55px;
+        right: 15px;
         top: -28px;
     }
     .others-option {
@@ -340,13 +342,12 @@
                 }
             }
             .menu-profile {
-                padding-right: 26px;
+                // padding-right: 26px;
 
                 img {
                     width: 40px;
                     height: 40px;
                     display: inline-block;
-                    margin-right: 8px;
                 }
             }
             &.dropdown {
@@ -528,7 +529,7 @@
     }
     .others-option-for-responsive {
         .dot-menu {
-            right: 45px;
+            right: 15px;
             top: -27px;
         }
         .container {
@@ -569,7 +570,7 @@
     }
     .others-option-for-responsive {
         .dot-menu {
-            right: 45px;
+            right: 15px;
             top: -27px;
         }
         .container {
@@ -611,56 +612,32 @@
             }
         }
     }
+    
 
 }
 /* Min width 1200px to Max width 1355px */
 @media only screen and (min-width: 1200px) and (max-width: 1355px) {
 
     .navbar-area {
-        .vesax-nav {
-            .navbar {
-                .others-option {
-                    display: none !important;
+        left: 0 !important;
+        width: 100% !important;
+        padding: 0px 15px !important;
+    }
+    .responsive-burger-menu {
+        display: block !important;
+    }
+    .vesax-responsive-nav {
+        .vesax-responsive-menu {
+            &.mean-container {
+                .mean-nav {
+                    margin-top: 41px;
                 }
             }
         }
     }
-    .others-option-for-responsive {
-        .dot-menu {
-            right: 18px;
-            top: -55px;
-        }
-        .container {
-            .container {
-                max-width: 260px;
-            }
-        }
-        .option-inner {
-            .others-option {
-                .option-item {
-                    span {
-                        display: inline-block;
-                    }
-                }
-                .profile-nav-item {
-                    .dropdown-toggle {
-                        &::before {
-                            right: 14px;
-                        }
-                    }
-                    .menu-profile {
-                        padding-right: 30px;
-                    }
-                    &.dropdown {
-                        .dropdown-menu {
-                            left: -10px !important;
-                        }
-                    }
-                }
-            }
-        }
+    .dot-menu {
+        display: none !important;
     }
-
 }
 /* Min width 1550px */
 @media only screen and (min-width: 1550px) {

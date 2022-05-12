@@ -7,6 +7,9 @@ import { NgxTypedJsModule } from 'ngx-typed-js';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 
+import { HttpClientModule } from '@angular/common/http';
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeDemoOneComponent } from './components/pages/home-demo-one/home-demo-one.component';
@@ -58,6 +61,7 @@ import { DashboardBookingsComponent } from './components/pages/dashboard/dashboa
 import { DashboardMyProfileComponent } from './components/pages/dashboard/dashboard-my-profile/dashboard-my-profile.component';
 import { DashboardAddListingsComponent } from './components/pages/dashboard/dashboard-add-listings/dashboard-add-listings.component';
 import { DashboardMyListingsComponent } from './components/pages/dashboard/dashboard-my-listings/dashboard-my-listings.component';
+import { LoadingComponent } from './components/common/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -110,7 +114,8 @@ import { DashboardMyListingsComponent } from './components/pages/dashboard/dashb
     DashboardBookingsComponent,
     DashboardMyProfileComponent,
     DashboardAddListingsComponent,
-    DashboardMyListingsComponent
+    DashboardMyListingsComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -118,6 +123,7 @@ import { DashboardMyListingsComponent } from './components/pages/dashboard/dashb
     BrowserAnimationsModule,
     CarouselModule,
     SelectDropDownModule,
+    HttpClientModule,
     NgxTypedJsModule,
     FormsModule,
     NgxPaginationModule

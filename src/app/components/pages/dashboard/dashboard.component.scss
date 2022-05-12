@@ -4,10 +4,11 @@
     background-color: #fafafa;
     min-height: 100vh;
     padding: {
-        right: 30px;
-        left: 280px;
-        top: 120px;
+        right: 10px;
+        left: 260px;
+        top: 100px;
     };
+
     .listing-area {
         background-color: var(--whiteColor);
         box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, .05);
@@ -397,6 +398,14 @@
             right: 15px;
             left: 15px;
         };
+
+        .home{
+            padding-top: 70px;
+            padding: {
+                right: 5px;
+                left: 5px;
+            };
+        }
         .mean-container {
             a {
                 &.meanmenu-reveal {
@@ -548,6 +557,14 @@
             right: 15px;
             left: 15px;
         };
+
+        .home{
+            padding-top: 70px;
+            padding: {
+                right: 5px;
+                left: 5px;
+            };
+        }
     }
     .invoices-box {
         ul {
@@ -580,6 +597,14 @@
             right: 15px;
             left: 15px;
         };
+        
+        .home{
+            padding-top: 70px;
+            padding: {
+                right: 5px;
+                left: 5px;
+            };
+        }
     }
     .invoices-box {
         ul {

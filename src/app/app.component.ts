@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationCancel, NavigationEnd } from '@angular/router';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { filter } from 'rxjs/operators';
+import { AuthService } from './services/auth-service.service';
+import { profile } from 'src/assets/classes/profile';
 declare let $: any;
 
 @Component({
@@ -22,11 +24,18 @@ export class AppComponent {
     location: any;
     routerSubscription: any;
 
-    constructor(private router: Router) {
+    constructor(private router: Router,
+                private authservice:AuthService) {
     }
 
     ngOnInit(){
         this.recallJsFuntions();
+        if(localStorage.getItem("refresh_token") != undefined && !this.authservice.tokenExpired(localStorage.getItem("refresh_token"))){
+            this.authservice.isAuthenticated=true; 
+        }else{
+            this.authservice.isAuthenticated=false; 
+        }
+        // this.authservice.getAccess_token(); 
     }
 
     recallJsFuntions() {
