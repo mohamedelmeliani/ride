@@ -4,7 +4,7 @@
         <div class="container">
             <div class="vesax-responsive-menu">
                 <div class="logo">
-                    <a routerLink="/"><img src="assets/img/logo.png" alt="logo"></a>
+                    <a routerLink="/"><img src="assets/img/logo-removebg-preview (1).png" alt="logo"></a>
                 </div>
             </div>
         </div>
@@ -13,7 +13,8 @@
     <div class="vesax-nav">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-md navbar-light">
-                <a class="navbar-brand" routerLink="/"><img src="assets/img/logo.png" alt="logo"></a>
+                <a class="navbar-brand" routerLink="/"><img src="assets/img/logo-removebg-preview (1).png"
+                        alt="logo"></a>
 
                 <div class="collapse navbar-collapse">
 
@@ -97,7 +98,8 @@
 
                     <div class="others-option d-flex align-items-center">
                         <div class="option-item">
-                            <span data-bs-toggle="modal" data-bs-target="#loginRegisterModal"><i class="flaticon-user"></i> Se connecter / S'inscrire</span>
+                            <span data-bs-toggle="modal" data-bs-target="#loginRegisterModal"><i
+                                    class="flaticon-user"></i> Se connecter / S'inscrire</span>
                         </div>
                     </div>
                 </div>
@@ -118,7 +120,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div> -->
             </div>
-            
+
             <div class="container">
                 <div class="option-inner">
                     <div class="others-option">
@@ -126,7 +128,8 @@
                         </div>
 
                         <div class="option-item">
-                            <span data-bs-toggle="modal" data-bs-target="#loginRegisterModal"><i class="flaticon-user"></i> Se connecter / S'inscrire</span>
+                            <span data-bs-toggle="modal" data-bs-target="#loginRegisterModal"><i
+                                    class="flaticon-user"></i> Se connecter / S'inscrire</span>
                         </div>
                     </div>
                 </div>
@@ -140,56 +143,71 @@
 <div class="modal fade loginRegisterModal" id="loginRegisterModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <button type="button" id="close" class="close" data-bs-dismiss="modal" aria-label="Close"><i class='bx bx-x'></i></button>
+            <button type="button" id="close" class="close" data-bs-dismiss="modal" aria-label="Close"><i
+                    class='bx bx-x'></i></button>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="true">Se connecter</button>
+                    <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login"
+                        type="button" role="tab" aria-controls="login" aria-selected="true">Se connecter</button>
                 </li>
                 <li class="nav-item">
-                    <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab" aria-controls="register" aria-selected="true">S'inscrire</button>
+                    <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register"
+                        type="button" role="tab" aria-controls="register" aria-selected="true">S'inscrire</button>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="login" role="tabpanel">
                     <app-loading *ngIf="showSpinner"></app-loading>
                     <div class="vesax-login" *ngIf="!showSpinner">
-                        <div *ngIf="showAlert" class="alert alert-danger" role="alert">Veuillez verifier les infos entrer</div>
+                        <div *ngIf="showAlert" class="alert alert-danger" role="alert">Veuillez verifier les infos
+                            entrer</div>
                         <span class="sub-title" (click)="showAlert=false"><span>Se connecter</span></span>
                         <form>
                             <div class="form-group">
-                                <input type="text" placeholder="Username or Email" class="form-control" (change)='username=$event.target.value' [value]="username">
+                                <input type="text" placeholder="Username or Email" class="form-control"
+                                    (change)='username=$event.target.value' [value]="username">
                             </div>
                             <div class="form-group">
-                                <input type="password" placeholder="Password" class="form-control" (change)='password=$event.target.value' [value]="password">
+                                <input type="password" placeholder="Password" class="form-control"
+                                    (change)='password=$event.target.value' [value]="password">
                             </div>
                             <button type="submit" (click)="Authenticate()">Se connecter</button>
                         </form>
                     </div>
                 </div>
                 <div class="tab-pane fade " id="register" role="tabpanel">
-                    <div class="vesax-register">
+                    <app-loading *ngIf="showSpinner"></app-loading>
+                    <div class="vesax-register" *ngIf="!showSpinner">
                         <span class="sub-title" (click)="showAlert=false"><span>S'inscrire</span></span>
-                        <div *ngIf="registration.password!==confirmpass" class="alert alert-warning" role="alert">Veuillez vérifier les mots de passe saisis</div>
-                        <div *ngIf="showAlert" class="alert alert-warning" role="alert">Certaines des informations saisies ne sont pas valides</div>
+                        <div *ngIf="registration.password!==confirmpass" class="alert alert-warning" role="alert">
+                            Veuillez vérifier les mots de passe saisis</div>
+                        <div *ngIf="showAlert" class="alert alert-warning" role="alert">Certaines des informations
+                            saisies ne sont pas valides</div>
                         <div *ngIf="badRequest" class="alert alert-warning" role="alert">Email Existe deja</div>
                         <form>
                             <div class="form-group">
-                                <input type="text" placeholder="Nom Complet" class="form-control" [(ngModel)]="registration.nom" name="name">
+                                <input type="text" placeholder="Nom Complet" class="form-control"
+                                    [(ngModel)]="registration.nom" name="name">
                             </div>
                             <div class="form-group">
-                                <input type="text" placeholder="Tel" class="form-control" [(ngModel)]="registration.tel" name="tel">
+                                <input type="text" placeholder="Tel" class="form-control" [(ngModel)]="registration.tel"
+                                    name="tel">
                             </div>
                             <div class="form-group">
-                                <input type="text" placeholder="Adresse" class="form-control" [(ngModel)]="registration.adresse" name="adresse">
+                                <input type="text" placeholder="Adresse" class="form-control"
+                                    [(ngModel)]="registration.adresse" name="adresse">
                             </div>
                             <div class="form-group">
-                                <input type="email" placeholder="Email" class="form-control" [(ngModel)]="registration.email" name="email">
+                                <input type="email" placeholder="Email" class="form-control"
+                                    [(ngModel)]="registration.email" name="email">
                             </div>
                             <div class="form-group">
-                                <input type="password" placeholder="Password" class="form-control" [(ngModel)]="registration.password" name="password">
+                                <input type="password" placeholder="Password" class="form-control"
+                                    [(ngModel)]="registration.password" name="password">
                             </div>
                             <div class="form-group">
-                                <input type="password" placeholder="Confirm Password" class="form-control" [(ngModel)]="confirmpass" name="newPassword">
+                                <input type="password" placeholder="Confirm Password" class="form-control"
+                                    [(ngModel)]="confirmpass" name="newPassword">
                             </div>
                             <button type="submit" (click)="register()">S'inscrire</button>
                         </form>

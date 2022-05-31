@@ -28,17 +28,21 @@ export class DashboardMyProfileComponent implements OnInit {
     showAlert = false;
     showModificaionAlert = false;
     badRequest = false;
+    isProfile = false;
+    successModify = false;
 
     confiramtion = 0;
 
     oldpass = "";
     newpass = "";
     confirmpass = "";
+    error = "";
 
     ngOnInit(): void {
         this.oldpass = "";
         this.newpass = "";
         this.confirmpass = "";
+        this.cars = undefined;
         this.authservice.getAccess_token();
         this.authservice.get("/user/profile").subscribe(data => {
             this.profile = data;
@@ -48,26 +52,43 @@ export class DashboardMyProfileComponent implements OnInit {
                 this.profilePic = "assets/img/user1.jpg";
             }
             this.showSpinner = false;
+            this.isProfile = true;
             console.log(this.profile)
         });
         this.authservice.get("/user/findCarsOfLoggedUser").subscribe(data => { this.cars = data; this.showCarsSpinner = false; })
     }
 
     modifyLogged(data) {
-        data.id = this.profile.id;
-        this.profile = undefined;
+        this.error = "";
+        this.showSpinner = true;
+        this.showModificaionAlert = false;
+        this.successModify = false;
+        this.badRequest = false;
         const values = Object.keys(data).map(key => data[key]);
         values.forEach(element => {
             if (element === "") {
                 this.showModificaionAlert = true;
+                this.showSpinner = false;
             }
         });
-        if (!this.isEmail(values[1]) || !this.isPhone(values[2])) {
+        if (!this.isEmail(values[1])) {
+            this.error = "Email invalide !";
             this.showModificaionAlert = true;
+            this.showSpinner = false;
+        }
+        if (!this.isPhone(values[2])) {
+            this.error = "Telephone invalide !"
+            this.showModificaionAlert = true;
+            this.showSpinner = false;
         }
         if (this.showModificaionAlert == false) {
             this.showSpinner = true;
-            this.authservice.put("/user/updateLogged", data).subscribe(Response => {
+            this.isProfile = false;
+            this.authservice.put("/user/updateLogged", data).subscribe(res => {
+                localStorage.clear();
+                localStorage.setItem("refresh_token", res.refresh_token);
+                localStorage.setItem("access_token", res.access_token);
+                this.showSpinner = false;
                 this.onUpload();
             }, err => {
                 if (err.status == 400) {
@@ -75,10 +96,10 @@ export class DashboardMyProfileComponent implements OnInit {
                 } else {
                     this.showModificaionAlert = true;
                 }
-                this.showSpinner = false;
+                this.ngOnInit();
             });
         }
-        console.log(values);
+        console.log(this.badRequest);
     }
 
 
@@ -140,6 +161,7 @@ export class DashboardMyProfileComponent implements OnInit {
     }
 
     addCar() {
+        this.showCarSpinner = true;
         const values = Object.keys(this.car).map(key => this.car[key]);
         this.showAlert = false;
         values.forEach(element => {
@@ -175,6 +197,7 @@ export class DashboardMyProfileComponent implements OnInit {
         } else {
             this.ngOnInit();
         }
+        this.successModify = true;
     }
 
 

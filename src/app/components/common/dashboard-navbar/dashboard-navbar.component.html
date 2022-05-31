@@ -28,11 +28,11 @@
                 </ul>
                 <div class="others-option d-flex align-items-center">
                     <div class="option-item">
-                        <div class="dropdown profile-nav-item" *ngIf="this.profile">
+                        <div class="dropdown profile-nav-item">
                             <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 <div class="menu-profile">
-                                    <img *ngIf="profilePic" src="{{profilePic}}" class="rounded-circle" alt="image">
+                                    <img  *ngIf="profilePic" src="{{profilePic}}" class="rounded-circle" alt="image">
                                     <span class="name">{{profile?.nom |titlecase }}</span>
                                 </div>
                             </a>

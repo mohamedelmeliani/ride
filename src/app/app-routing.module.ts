@@ -19,37 +19,39 @@ import { HomeDemoTwoComponent } from './components/pages/home-demo-two/home-demo
 import { HowItWorksPageComponent } from './components/pages/how-it-works-page/how-it-works-page.component';
 import { ListingsDetailsComponent } from './components/pages/listings-details/listings-details.component';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
+import { ResetPasswordComponent } from './components/pages/reset-password/reset-password.component';
 import { TopPlaceComponent } from './components/pages/top-place/top-place.component';
 import { VerticalListingsFullWidthComponent } from './components/pages/vertical-listings-full-width/vertical-listings-full-width.component';
 import { VerticalListingsLeftSidebarComponent } from './components/pages/vertical-listings-left-sidebar/vertical-listings-left-sidebar.component';
 import { VerticalListingsRightSidebarComponent } from './components/pages/vertical-listings-right-sidebar/vertical-listings-right-sidebar.component';
 
 const routes: Routes = [
-    {path: '', component: HomeDemoOneComponent},
-    {path: 'index-2', component: HomeDemoTwoComponent},
-    {path: 'about', component: AboutUsComponent},
-    {path: 'how-it-works', component: HowItWorksPageComponent},
-    {path: 'faq', component: FaqComponent},
-    {path: 'coming-soon', component: ComingSoonComponent},
-    {path: 'contact', component: ContactComponent},
-    {path: 'user-profile', component: AuthorProfileComponent},
-    {path: 'categories', component: CategoriesComponent},
-    {path: 'destinations', component: TopPlaceComponent},
-    {path: 'vertical-listings-left-sidebar', component: VerticalListingsLeftSidebarComponent},
-    {path: 'vertical-listings-right-sidebar', component: VerticalListingsRightSidebarComponent},
-    {path: 'vertical-listings-full-width', component: VerticalListingsFullWidthComponent},
-    {path: 'grid-listings-left-sidebar', component: GridListingsLeftSidebarComponent},
-    {path: 'grid-listings-right-sidebar', component: GridListingsRightSidebarComponent},
-    {path: 'grid-listings-full-width', component: GridListingsFullWidthComponent},
-    {path: 'single-listings', component: ListingsDetailsComponent},
-    {path: 'dashboard', component: DashboardComponent},
-    {path: 'dashboard-bookings', component: DashboardBookingsComponent},
-    {path: 'dashboard-my-profile', component: DashboardMyProfileComponent},
-    {path: 'dashboard-add-listings', component: DashboardAddListingsComponent},
-    {path: 'dashboard-my-listings', component: DashboardMyListingsComponent},
+    { path: '', component: HomeDemoOneComponent },
+    { path: 'index-2', component: HomeDemoTwoComponent },
+    { path: 'about', component: AboutUsComponent },
+    { path: 'how-it-works', component: HowItWorksPageComponent },
+    { path: 'faq', component: FaqComponent },
+    { path: 'passwordForgettenVerification', component: ComingSoonComponent },
+    { path: 'ResetPassword', component: ResetPasswordComponent },
+    { path: 'contact', component: ContactComponent },
+    { path: 'user-profile', component: AuthorProfileComponent },
+    { path: 'categories', component: CategoriesComponent },
+    { path: 'destinations', component: TopPlaceComponent },
+    { path: 'vertical-listings-left-sidebar', component: VerticalListingsLeftSidebarComponent },
+    { path: 'vertical-listings-right-sidebar', component: VerticalListingsRightSidebarComponent },
+    { path: 'vertical-listings-full-width', component: VerticalListingsFullWidthComponent },
+    { path: 'grid-listings-left-sidebar', component: GridListingsLeftSidebarComponent },
+    { path: 'grid-listings-right-sidebar', component: GridListingsRightSidebarComponent },
+    { path: 'grid-listings-full-width', component: GridListingsFullWidthComponent },
+    { path: 'single-listings', component: ListingsDetailsComponent },
+    { path: 'dashboard', component: DashboardComponent },
+    { path: 'dashboard-bookings', component: DashboardBookingsComponent },
+    { path: 'dashboard-my-profile', component: DashboardMyProfileComponent },
+    { path: 'dashboard-add-listings', component: DashboardAddListingsComponent },
+    { path: 'dashboard-my-listings', component: DashboardMyListingsComponent },
     // Here add new pages component
 
-    {path: '**', component: NotFoundComponent} // This line will remain down from the whole pages component list
+    { path: '**', component: NotFoundComponent } // This line will remain down from the whole pages component list
 ];
 
 @NgModule({

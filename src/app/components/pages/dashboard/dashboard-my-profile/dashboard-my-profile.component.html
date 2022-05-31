@@ -17,12 +17,15 @@
     <!-- End Breadcrumb Area -->
     <app-loading *ngIf="showSpinner"></app-loading>
     <!-- Start -->
-    <div class="row">
+    <div class="row" *ngIf="!showSpinner">
         <div class="col-lg-6 col-md-12">
+            <div *ngIf="showModificaionAlert&&!error" class="alert alert-warning" role="alert">Certaines des informations
+                saisies ne sont pas valides</div>
+            <div *ngIf="error" class="alert alert-danger" role="alert">{{error}}</div>
+            <div *ngIf="badRequest" class="alert alert-danger" role="alert">Email Existe deja</div>
+            <div *ngIf="successModify" class="alert alert-success" role="alert">Bien modifier</div>
             <div class="my-profile-box">
                 <h3>Profile Details</h3>
-                <div *ngIf="showModificaionAlert" class="alert alert-warning" role="alert">Certaines des informations saisies ne sont pas valides</div>
-                <div *ngIf="badRequest" class="alert alert-warning" role="alert">Email Existe deja</div>
                 <form #f="ngForm" (ngSubmit)="modifyLogged(f.value)">
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
@@ -117,9 +120,12 @@
                 <form>
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
-                            <div *ngIf="newpass!==confirmpass" class="alert alert-warning" role="alert">Veuillez verifier les infos entrer</div>
-                            <div *ngIf="confiramtion==1" class="alert alert-success" role="alert">Mot de passe changer avec success</div>
-                            <div *ngIf="confiramtion==2" class="alert alert-danger" role="alert">Something went wrong</div>
+                            <div *ngIf="newpass!==confirmpass" class="alert alert-warning" role="alert">Veuillez
+                                verifier les infos entrer</div>
+                            <div *ngIf="confiramtion==1" class="alert alert-success" role="alert">Mot de passe changer
+                                avec success</div>
+                            <div *ngIf="confiramtion==2" class="alert alert-danger" role="alert">Something went wrong
+                            </div>
                             <div class="form-group">
                                 <label>Current Password</label>
                                 <input type="password" class="form-control" [(ngModel)]="oldpass" name="oldPassword">
@@ -136,7 +142,8 @@
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
                                 <label>Confirm New Password</label>
-                                <input type="password" class="form-control" [(ngModel)]="confirmpass" name="newPassword">
+                                <input type="password" class="form-control" [(ngModel)]="confirmpass"
+                                    name="newPassword">
                             </div>
                         </div>
 
@@ -166,7 +173,7 @@
         <div class="modal-content">
             <app-loading *ngIf="showCarSpinner"></app-loading>
             <div *ngIf="showAlert" class="alert alert-danger" role="alert">Veuillez verifier les infos entrer</div>
-            <div class="tab-content" id="myTabContent" *ngIf="car">
+            <div class="tab-content" id="myTabContent" *ngIf="!showCarSpinner">
                 <div class="tab-pane fade show active" id="login" role="tabpanel">
                     <button type="button" id="close" data-bs-dismiss="modal" aria-label="Close" hidden><i
                             class='bx bx-x'></i></button>
@@ -196,32 +203,6 @@
                                 <label>Places : </label>
                                 <input type="number" min="2" max="10" class="form-control" [(ngModel)]="car.nbrePlace"
                                     name="nbrePlace" required>
-                            </div>
-                            <div class="add-listings-box">
-                                <div class="form-group">
-                                    <div class="sidebar-widgets">
-                                        <div class="box">
-                                            <span class="title">La musique est-elle autorisée ?</span>
-                                            <label class="switch">
-                                                <input type="checkbox" [(ngModel)]="car.music" name="music">
-                                                <span></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="add-listings-box">
-                                <div class="form-group">
-                                    <div class="sidebar-widgets">
-                                        <div class="box">
-                                            <span class="title">Est-il permis de fumer ?</span>
-                                            <label class="switch">
-                                                <input type="checkbox" [(ngModel)]="car.smock" name="smock">
-                                                <span></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <!-- <button type="submit" (click)="modifyCar(car.mat)">Modify Car</button> -->
                             <div class="modal-footer">

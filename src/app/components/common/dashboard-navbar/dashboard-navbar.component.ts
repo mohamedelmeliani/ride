@@ -24,7 +24,6 @@ export class DashboardNavbarComponent implements OnInit {
       }else{
           this.profilePic="assets/img/user1.jpg";
       }
-      this.showSpinner = false;
       console.log(this.profile)
   });
   }

@@ -62,6 +62,7 @@ import { DashboardMyProfileComponent } from './components/pages/dashboard/dashbo
 import { DashboardAddListingsComponent } from './components/pages/dashboard/dashboard-add-listings/dashboard-add-listings.component';
 import { DashboardMyListingsComponent } from './components/pages/dashboard/dashboard-my-listings/dashboard-my-listings.component';
 import { LoadingComponent } from './components/common/loading/loading.component';
+import { ResetPasswordComponent } from './components/pages/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -115,7 +116,8 @@ import { LoadingComponent } from './components/common/loading/loading.component'
     DashboardMyProfileComponent,
     DashboardAddListingsComponent,
     DashboardMyListingsComponent,
-    LoadingComponent
+    LoadingComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,

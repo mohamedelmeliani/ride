@@ -59,13 +59,16 @@ export class NavbarStyleOneComponent implements OnInit {
   register() {
     const values = Object.keys(this.registration).map(key => this.registration[key]);
     this.showAlert = false;
+    this.showSpinner=true;
     values.forEach(element => {
       if (element === "") {
         this.showAlert = true;
+        this.showSpinner = false;
       }
     });
     if (!this.isEmail(values[3]) ||!this.isPhone(values[2])) {
       this.showAlert = true;
+      this.showSpinner = false;
     }
     if (this.showAlert == false) {
       this.showAlert = false;

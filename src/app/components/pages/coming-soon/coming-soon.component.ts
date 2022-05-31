@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth-service.service';
 
 @Component({
     selector: 'app-coming-soon',
@@ -7,42 +9,72 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ComingSoonComponent implements OnInit {
 
-    days: any;
-    hours: any;
-    minutes: any;
-    seconds: any;
-    myInterval: any;
+    showCode = false;
+    email = "";
+    code = "";
+    showErrorEmail = false;
+    textErrorEmail = "";
+    textErrorCode = "";
+    showErrorCode = false;
+    showSpinner = false;
 
-    constructor() { }
+    constructor(private http: HttpClient, private service: AuthService) { }
 
     ngOnInit() {
-        this.myInterval = setInterval(() => {
-            this.commingSoonTime();
-        }, 0);
+
     }
 
-    comingSoonContent = [
-        {
-            title: 'We Are Launching Soon'
+    emailSent() {
+        if (this.email != ""&&this.isEmail(this.email)) {
+            this.showSpinner = true;
+            this.http.get(this.service.host + "/all/demandeConfirmation/" + this.email).subscribe(
+                res => {
+                    this.showCode = true;
+                    this.showErrorEmail = false;
+                    this.showSpinner = false;
+                }, err => {
+                    this.showErrorEmail = true;
+                    this.textErrorEmail = "Veuillez verifier votre Email";
+                    this.showSpinner = false;
+                }
+            )
+        } else if (!this.isEmail(this.email)) {
+            this.showErrorEmail = true;
+            this.textErrorEmail = "Email invalid";
+        } else {
+            this.showErrorEmail = true;
+            this.textErrorEmail = "Veuillez verifier votre Email";
         }
-    ]
+    }
 
-    commingSoonTime = () => {
-        const endTimeParse = (Date.parse('March 20, 2022 17:00:00 PDT')) / 1000;
-        const now = new Date();
-        const nowParse = (Date.parse(now.toString()) / 1000);
-        const timeLeft = endTimeParse - nowParse;
-        const days = Math.floor(timeLeft / 86400);
-        let hours = Math.floor((timeLeft - (days * 86400)) / 3600);
-        let minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600 )) / 60);
-        let seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
-        if (hours < 10) { hours = 0 + hours; }
-        if (minutes < 10) { minutes = 0 + minutes; }
-        if (seconds < 10) { seconds = 0 + seconds; }
-        this.days = days;
-        this.hours = hours;
-        this.minutes = minutes;
-        this.seconds = seconds;
+    verifyCode() {
+        if (this.email != "" && this.code != ""&&this.isEmail(this.email)&&this.code.length==6) {
+            this.showSpinner = true;
+            this.http.get(this.service.host + "/all/verifyConfirmation/" + this.email+"?code="+this.code).subscribe(
+                res => {
+                    this.showCode = true;
+                    this.showErrorEmail = false;
+                    this.showSpinner = false;
+                }, err => {
+                    this.showErrorEmail = true;
+                    this.textErrorEmail = "Veuillez verifier votre Email ou votre code";
+                    this.showSpinner = false;
+                }
+            )
+        } 
+        else if (this.code.length!=6) {
+            this.showErrorCode = true;
+            this.textErrorCode = "Code invalid";
+        }
+        else {
+            this.showErrorEmail = true;
+            this.textErrorEmail = "Veuillez verifier votre Email";
+        }
+    }
+
+    isEmail(email) {
+        var EmailRegex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return EmailRegex.test(email);
     }
 
 }
